@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empreendimentos</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background-color: #f5f5f5; display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; }
+    .container { width: 100%; max-width: 480px; padding: 2rem; }
+    .card, .login-container { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+    .login-container h2, .list-container h2 { text-align: center; margin-bottom: 1.5rem; }
+    .input-group { margin-bottom: 1rem; }
+    .input-group label { display: block; margin-bottom: 0.5rem; }
+    .input-group input { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px; }
+    .btn { width: 100%; padding: 0.75rem; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; text-align: center; }
+    .btn:hover { background-color: #0056b3; }
+    .empreendimento-item { padding: 1rem; background: white; margin-bottom: 1rem; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); cursor: pointer; }
+    .detail-container { display: none; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+    .back-btn { margin-top: 1rem; background-color: #6c757d; }
+    .back-btn:hover { background-color: #5a6268; }
+    .btn-group { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-container" id="loginPage">
+      <h2>Login</h2>
+      <div class="input-group">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" placeholder="Digite seu usuário">
+      </div>
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha">
+      </div>
+      <button class="btn" onclick="entrar()">Entrar</button>
+    </div>
+
+    <div class="list-container" id="listaEmpreendimentos" style="display:none">
+      <h2>Empreendimentos</h2>
+      <div class="empreendimento-item" onclick="mostrarDetalhes()">Empreendimento A</div>
+    </div>
+
+    <div class="detail-container" id="detalhesEmpreendimento">
+      <h2>Empreendimento A</h2>
+      <p><strong>Valor de Venda:</strong> R$ 200.000</p>
+      <p><strong>Valor de Avaliação:</strong> R$ 220.000</p>
+      <p><strong>Construtora:</strong> Construtora ABC</p>
+      <p><strong>Data de Lançamento:</strong> 10/04/2025</p>
+      <div class="btn-group">
+        <a class="btn" href="book-empreendimento-a.pdf" download>📎 Baixar Book PDF</a>
+        <button class="btn" onclick="verMaisDetalhes()">🔍 Ver Detalhes</button>
+        <button class="btn back-btn" onclick="voltarParaLista()">← Voltar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function entrar() {
+      document.getElementById('loginPage').style.display = 'none';
+      document.getElementById('listaEmpreendimentos').style.display = 'block';
+    }
+    function mostrarDetalhes() {
+      document.getElementById('listaEmpreendimentos').style.display = 'none';
+      document.getElementById('detalhesEmpreendimento').style.display = 'block';
+    }
+    function voltarParaLista() {
+      document.getElementById('detalhesEmpreendimento').style.display = 'none';
+      document.getElementById('listaEmpreendimentos').style.display = 'block';
+    }
+    function verMaisDetalhes() {
+      alert('Aqui poderia abrir uma nova tela com painel detalhado ou abrir nova rota.');
+    }
+  </script>
+</body>
+</html>
